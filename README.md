@@ -3,14 +3,14 @@
 Esse Readme contém o passo a passo para clonar e rodar o projeto, a metodologia abordada e os resultados obtidos
 
 # Metodologia
-Visando resolver um problema comum na robótica que é a navegação autônoma, implementamos um algorítimo de planejamento de trajetória para definir um caminho a ser percorrido de um ponto inicial até um ponto final. Para isso optamos por escolher o algoritmo AStar.
+Visando resolver um problema comum na robótica que é a navegação autônoma, implementamos um algoritmo de planejamento de trajetória para definir um caminho a ser percorrido de um ponto inicial até um ponto final. Para isso optamos por escolher o algoritmo AStar.
 
-## Funcionamento do algorítimo
+## Funcionamento do algoritmo
 
 Para criar uma trajetória entre o ponto de origem e o destino, precisamos de um mapa do terreno onde será feita a trajetória, um ponto inicial e um ponto final. O mapa deve conter as informações dos obstáculos que devem ser evitados para traçar uma rota válida.
 ![image](https://github.com/jeanjnap/Projeto_implementacao_1_ROS/assets/26336215/fbc891ef-9844-44be-aa91-66ef7a2ba6de)
 
-O algorítimo irá pegar os pixels da imagem do mapeamento e converter em uma matriz binária, onde os píxels escuros são marcados como 1 e representam os caminhos bloqueados.
+O algoritmo irá pegar os pixels da imagem do mapeamento e converter em uma matriz binária, onde os píxels escuros são marcados como 1 e representam os caminhos bloqueados.
 
 ![image](https://github.com/jeanjnap/Projeto_implementacao_1_ROS/assets/26336215/7d11d2b5-321a-475d-926c-d99dfcead0dc)
 
@@ -30,7 +30,7 @@ Nos primeiros passos podemos nos mover apenas para baixo, pois temos uma parede 
 
 Temos também as cores laranja para demostrar o pixel atual e a cor amarela para demonstrar o caminho já percorrido.
 
-No passo atual podemos ir tanto para baixo como para a direita, para escolher qual pixel deve ser o próximo, o algorítimo usa o cálculo de distância euclidiana, usando como base a posição das linhas e colunas para medir qual o pixel mais próximo do final, levando em consideração os pixels vizinhos disponíveis.
+No passo atual podemos ir tanto para baixo como para a direita, para escolher qual pixel deve ser o próximo, o algoritmo usa o cálculo de distância euclidiana, usando como base a posição das linhas e colunas para medir qual o pixel mais próximo do final, levando em consideração os pixels vizinhos disponíveis.
 
 ![image](https://github.com/jeanjnap/Projeto_implementacao_1_ROS/assets/26336215/1a4a60d1-f9e2-4da3-a683-c1199459b7d0)![image](https://github.com/jeanjnap/Projeto_implementacao_1_ROS/assets/26336215/ef4b2dc9-0947-4b27-a2e5-a42b124808b9)
 
@@ -41,7 +41,7 @@ Após os cálculos, podemos ver que o pixel marcado em roxo claro tem uma distâ
 
 ![image](https://github.com/jeanjnap/Projeto_implementacao_1_ROS/assets/26336215/71b47433-ad33-4dd0-8149-5c15d79f5a84)
 
-Assim continuamos com o algorítimo até chegar ao ponto final.
+Assim continuamos com o algoritmo até chegar ao ponto final.
 
 ![image](https://github.com/jeanjnap/Projeto_implementacao_1_ROS/assets/26336215/ade901ce-a922-4175-8de9-4b13068f77bf)
 
