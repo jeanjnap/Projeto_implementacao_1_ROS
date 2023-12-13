@@ -55,6 +55,9 @@ Assim continuamos com o algoritmo até chegar ao ponto final.
 
 Após todo esse processamento temos enfim uma rota definida.
 
+# Vídeo da execução
+https://github.com/jeanjnap/Projeto_implementacao_1_ROS/blob/main/assets/path_planing.mp4
+
 
 # Configuração e execução
 ## Clonando o projeto
