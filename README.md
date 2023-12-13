@@ -16,7 +16,7 @@ sudo apt-get install ros-noetic-navigation
 ## Alterando o caminho das peças do robô
 
 1. Abra o arquivo 
-ros_world/worlds/cd_new.world
+ros_world/worlds/dc_new.world
 
 Substitua o caminho dos arquivos nas 6 ocorrencias de 'home/jean/workspace/src/turtlebot3/meshes' para a localização do arquivo correspondente na sua workspace
 
