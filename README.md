@@ -78,9 +78,9 @@ ros-noetic-navfn
 
 ## Configurando e executando o projeto
 1. Abra o arquivo 
-ros_world/worlds/dc_new.world
+src/sim_env/worlds/dc.world
 
-Substitua o caminho dos arquivos nas 6 ocorrencias de 'home/jean/workspace/src/turtlebot3/meshes' para a localização do arquivo correspondente na sua workspace
+Substitua o caminho dos arquivos nas 6 ocorrencias de 'home/jean/workspace/src/Projeto_implementacao_1_ROS/meshes' para a localização do arquivo correspondente na sua workspace
 
 ![trab_robotica](https://github.com/jeanjnap/Projeto_implementacao_1_ROS/assets/26336215/a75bf981-d8f2-4d98-90f6-6a703ab50541)
 
