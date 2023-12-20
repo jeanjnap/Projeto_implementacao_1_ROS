@@ -94,15 +94,8 @@ source devel/setup.bash
 3. Iniciando a simulação do Gazebo e Rviz
 
 ```bash
-roslaunch ros_world gazebo.launch
-```
-
-4. Iniciando o script de planejamento de trajetória
-Após a abertura do Gazebo e Rviz abra um novo terminal no diretório 'global_path_planning/scripts' e rode o seguinte comando
-
-```bash
-python3 path_planning_server.py
+roslaunch sim_env main.launch
 ```
 
 5. Na janela do Rviz clique em '2D Nav Goal' e clique no ponto que deseja que o robô vá.
-Um ponto será marcado em vermelho (destino) e um ponto azul (origem) e logo em seguida será iniciada a criação da trajetória até encontrar o um caminho até o ponto de destino, assim que terminar será criada a rota em verde e o robô seguirá a rota
+Uma trajetória será criada até encontrar o um caminho até o ponto de destino, assim que terminar será criada a rota em verde e o robô seguirá a rota
