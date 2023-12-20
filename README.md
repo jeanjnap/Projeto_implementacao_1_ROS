@@ -8,7 +8,7 @@ Visando resolver um problema comum na robótica que é a navegação autônoma, 
 ## Funcionamento do algoritmo
 
 Para criar uma trajetória entre o ponto de origem e o destino, precisamos de um mapa do terreno onde será feita a trajetória, um ponto inicial e um ponto final. O mapa deve conter as informações dos obstáculos que devem ser evitados para traçar uma rota válida.
-![image](https://github.com/jeanjnap/Projeto_implementacao_1_ROS/assets/26336215/fbc891ef-9844-44be-aa91-66ef7a2ba6de)
+![image](https://github.com/jeanjnap/Projeto_implementacao_1_ROS/blob/main/src/assets/path_planning.gif)
 
 O algoritmo irá pegar os pixels da imagem do mapeamento e converter em uma matriz binária, onde os píxels escuros são marcados como 1 e representam os caminhos bloqueados.
 
@@ -54,9 +54,6 @@ Assim continuamos com o algoritmo até chegar ao ponto final.
 ![image](https://github.com/jeanjnap/Projeto_implementacao_1_ROS/assets/26336215/b71614f3-12bf-46f2-bd24-49f9cc5ac104)
 
 Após todo esse processamento temos enfim uma rota definida.
-
-# Vídeo da execução
-https://github.com/jeanjnap/Projeto_implementacao_1_ROS/blob/main/assets/path_planing.mp4
 
 
 # Configuração e execução
