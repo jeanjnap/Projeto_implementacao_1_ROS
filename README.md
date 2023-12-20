@@ -66,9 +66,14 @@ entre no seu workspace/src e rode o seguinte comando
 git clone https://github.com/jeanjnap/Projeto_implementacao_1_ROS.git
 ```
 
-Baixe o ROS Navigation Stack
+Dependências
 ```bash
-sudo apt-get install ros-noetic-navigation
+sudo apt install python-is-python3 \
+ros-noetic-amcl \
+ros-noetic-base-local-planner \
+ros-noetic-map-server \
+ros-noetic-move-base \
+ros-noetic-navfn
 ```
 
 ## Configurando e executando o projeto
