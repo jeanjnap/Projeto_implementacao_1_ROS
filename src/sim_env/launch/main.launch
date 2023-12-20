@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<launch>
+	<arg name="rviz_file" value="sim_env.rviz" />
+	<arg name="world" default="dc" />
+    <arg name="map" default="mapa" />
+    <arg name="robot_number" default="1" />
+
+	<arg name="debug" default="false" />
+    <arg name="gui" default="true" />
+    <arg name="headless" default="false" />
+
+    <!-- Start Gazebo with a specific world -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" unless="$(eval arg('world') == '')">
+        <arg name="world_name" value="$(find sim_env)/worlds/$(arg world).world" />
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="paused" value="false" />
+        <arg name="use_sim_time" value="true" />
+        <arg name="headless" value="$(arg headless)" />
+    </include>
+
+
+    <!-- start map-server and publish user map -->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find sim_env)/maps/$(arg map)/$(arg map).yaml"
+        unless="$(eval arg('map') == '')" />
+
+    <!-- Spawn multi robots with specific pose, and add robot control and state publisher. -->
+    <include file="$(find sim_env)/launch/include/robots/start_robots.launch.xml" />
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sim_env)/rviz/$(arg rviz_file)"
+        unless="$(eval arg('rviz_file') == '')" />
+</launch>

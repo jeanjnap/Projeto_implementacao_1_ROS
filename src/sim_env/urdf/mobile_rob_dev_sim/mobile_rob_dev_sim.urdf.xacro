@@ -1,0 +1,185 @@
+<?xml version="1.0" ?>
+<robot name="mobile_rob_dev_sim" xmlns:xacro="http://ros.org/wiki/xacro">
+  <!--link name="world"/-->
+  <link name="map"/>
+  <link name="odom"/>
+  
+  <!-- * * * base_link link * * * -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0.00461487870734328 0.000366188243899251 0.111305202476825" rpy="0 0 0"/>
+      <mass
+      value="8.01860580709809"/>
+      <inertia
+      ixx="0.156639319017219"      ixy="1.11164438093558E-09"    ixz="-2.73458344436832E-06"
+                                   iyy="0.170503040844609"       iyz="-3.90039384128734E-13"
+                                                                 izz="0.273984906364084"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://sim_env/meshes/mobile_rob_dev_sim/base_link.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://sim_env/meshes/mobile_rob_dev_sim/base_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- * * * From Map to Odom Joint * * * -->
+  <joint name="fixed_map_to_odom" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="map"/>
+    <child link="odom"/>
+  </joint>
+  <!-- * * * From Odom to Base_Link Joint * * * -->
+  <joint name="fixed_odom_to_base_link" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="odom"/>
+    <child link="base_link"/>
+  </joint>
+
+  <!-- * * * left_wheel link * * * -->
+  <link name="left_wheel">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.211162907036622"/>
+      <inertia
+        ixx="0.000475634940966531"  ixy="1.03328518564722E-21"  ixz="5.23183801417296E-19" 
+                                    iyy="0.000931261531604138"  iyz="4.20387846548917E-21" 
+                                                                izz="0.000475634940966532"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://sim_env/meshes/mobile_rob_dev_sim/left_wheel.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="1 0.752941176470588 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://sim_env/meshes/mobile_rob_dev_sim/left_wheel.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- * * * left_wheel_joint * * * -->
+  <joint name="left_wheel_joint" type="continuous">
+    <origin xyz="0 0.25563 0.035863" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="left_wheel"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- * * * left_wheel_transmission * * * -->
+  <transmission name="left_wheel_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_wheel_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_wheel_actuator">
+      <mecanicalReduction>7</mecanicalReduction>
+      <mecanicalReduction>VelocityJointInterface</mecanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- * * * right_wheel link * * * -->
+  <link name="right_wheel">
+    <inertial>
+      <!--origin xyz="1.11022302462516E-16 -1.38777878078145E-17 0" rpy="0 0 0"/-->
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.211162907036622"/>
+      <inertia
+        ixx="0.000475634940966534"  ixy="1.38722267285926E-22"  ixz="6.955139226144E-19" 
+                                    iyy="0.000931261531604141"  iyz="4.2270223968197E-21" 
+                                                                izz="0.000475634940966533"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://sim_env/meshes/mobile_rob_dev_sim/right_wheel.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="1 0.752941176470588 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://sim_env/meshes/mobile_rob_dev_sim/right_wheel.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- * * * right_wheel_joint * * * -->
+  <joint name="right_wheel_joint" type="continuous">
+    <origin xyz="0 -0.25563 0.035863" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="right_wheel"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- * * * right_wheel_transmission * * * -->
+  <transmission name="right_wheel_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_wheel_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="right_wheel_actuator">
+      <mecanicalReduction>7</mecanicalReduction>
+      <mecanicalReduction>VelocityJointInterface</mecanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- * * * base_rplidar link * * * -->
+  <link name="base_rplidar">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.06 0.06 0.03"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.06 0.06 0.03"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <mass value="1e-5"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia
+        ixx="1e-6"     ixy="0"     ixz="0"
+                       iyy="1e-6"  iyz="0"
+                                   izz="1e-6"/>
+    </inertial>
+  </link>
+
+  <!-- * * * rplidar_joint * * * -->
+  <joint name="rplidar_joint" type="fixed">
+    <origin xyz="0.255 0 0.05" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="base_rplidar"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  
+  <link name="scan"/>
+
+  <!-- * * * scan_joint * * * -->
+  <joint name="scan_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="base_rplidar"/>
+    <child link="scan"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+</robot>

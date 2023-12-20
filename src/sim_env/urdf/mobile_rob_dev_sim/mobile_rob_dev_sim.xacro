@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<robot name="mobile_rob_dev_sim" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find sim_env)/urdf/mobile_rob_dev_sim/common_properties.xacro"/>
+  <xacro:include filename="$(find sim_env)/urdf/mobile_rob_dev_sim/mobile_rob_dev_sim.gazebo.xacro"/>
+  <xacro:include filename="$(find sim_env)/urdf/mobile_rob_dev_sim/mobile_rob_dev_sim.urdf.xacro"/>
+  
+</robot>
